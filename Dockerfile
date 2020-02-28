@@ -13,7 +13,7 @@ RUN useradd -u ${USER_ID} -g dash -s /bin/bash -m -d /dash dash
 
 RUN chown dash:dash -R /dash
 
-ADD https://github.com/dashpay/dash/releases/download/v1.6.1/dashcore-1.6.1-x86_64-linux-gnu.tar.gz /tmp/
+ADD https://github.com/dashpay/dash/releases/download/v0.15.0.0/dashcore-0.15.0.0-x86_64-linux-gnu.tar.gz /tmp/
 RUN tar -xvf /tmp/dashcore-*.tar.gz -C /tmp/
 RUN cp /tmp/dashcore*/bin/*  /usr/local/bin
 RUN rm -rf /tmp/dashcore*
