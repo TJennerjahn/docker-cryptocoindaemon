@@ -14,6 +14,8 @@ if [ ! -e "$HOME/.poliscore/polis.conf" ]; then
 testnet=${TESTNET:-0}
 disablewallet=${DISABLEWALLET:-1}
 printtoconsole=${PRINTTOCONSOLE:-1}
+rpcclienttimeout=${RPCCLIENTTIMEOUT:30}
+rpcport=${RPCPORT:9998}
 rpcuser=${RPCUSER:-polisrpc}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
 EOF
