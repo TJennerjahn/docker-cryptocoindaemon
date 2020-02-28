@@ -1,4 +1,4 @@
-Polisd for Docker
+Cryptocoin daemons for docker
 ================
 
 [![Docker Stats](http://dockeri.co/image/polispay/polisd)](https://hub.docker.com/r/polispay/polisd/)
