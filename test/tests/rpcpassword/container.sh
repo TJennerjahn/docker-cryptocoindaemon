@@ -2,14 +2,14 @@
 set -e
 
 # Generate the password the first time
-dash_init 2>/dev/null
-eval `grep rpcpassword $HOME/.dashcore/dash.conf`
+polis_init 2>/dev/null
+eval `grep rpcpassword $HOME/.poliscore/polis.conf`
 rpcpassword1=$rpcpassword
 
 # Generate the password again
-rm ~/.dashcore/dash.conf
-dash_init 2>/dev/null
-eval `grep rpcpassword $HOME/.dashcore/dash.conf`
+rm ~/.poliscore/polis.conf
+polis_init 2>/dev/null
+eval `grep rpcpassword $HOME/.poliscore/polis.conf`
 rpcpassword2=$rpcpassword
 
 

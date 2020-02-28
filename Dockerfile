@@ -1,23 +1,22 @@
 FROM phusion/baseimage
-MAINTAINER Holger Schinzel <holger@dash.org>
 
 ARG USER_ID
 ARG GROUP_ID
 
-ENV HOME /dash
+ENV HOME /polis
 
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID:-1000}
 ENV GROUP_ID ${GROUP_ID:-1000}
-RUN groupadd -g ${GROUP_ID} dash
-RUN useradd -u ${USER_ID} -g dash -s /bin/bash -m -d /dash dash
+RUN groupadd -g ${GROUP_ID} polis
+RUN useradd -u ${USER_ID} -g polis -s /bin/bash -m -d /polis polis
 
-RUN chown dash:dash -R /dash
+RUN chown polis:polis -R /polis
 
-ADD https://github.com/dashpay/dash/releases/download/v0.15.0.0/dashcore-0.15.0.0-x86_64-linux-gnu.tar.gz /tmp/
-RUN tar -xvf /tmp/dashcore-*.tar.gz -C /tmp/
-RUN cp /tmp/dashcore*/bin/*  /usr/local/bin
-RUN rm -rf /tmp/dashcore*
+ADD https://github.com/polispay/polis/releases/download/v1.6.1/poliscore-1.6.1-x86_64-linux-gnu.tar.gz /tmp/
+RUN tar -xvf /tmp/poliscore-*.tar.gz -C /tmp/
+RUN cp /tmp/poliscore*/bin/*  /usr/local/bin
+RUN rm -rf /tmp/poliscore*
 
 ADD ./bin /usr/local/bin
 RUN chmod a+x /usr/local/bin/*
@@ -26,12 +25,12 @@ RUN chmod a+x /usr/local/bin/*
 # denied issues when executing /bin/bash from trusted builds.  Building locally
 # works fine (strange).  Using the upstream docker (0.11.1) pkg from
 # http://get.docker.io/ubuntu works fine also and seems simpler.
-USER dash
+USER polis
 
-VOLUME ["/dash"]
+VOLUME ["/polis"]
 
 EXPOSE 9998 9999 19998 19999
 
-WORKDIR /dash
+WORKDIR /polis
 
-CMD ["dash_oneshot"]
+CMD ["polis_oneshot"]
