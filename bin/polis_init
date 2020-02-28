@@ -28,3 +28,5 @@ fi
 cat $HOME/.poliscore/polis.conf
 
 echo "Initialization completed successfully"
+
+#
