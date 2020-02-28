@@ -4,7 +4,7 @@
 #
 set -ex
 
-POLIS_IMAGE=${POLIS_IMAGE:-polispay/polisd}
+DASH_IMAGE=${DASH_IMAGE:-dashpay/dashd}
 
 distro=$1
 shift
@@ -35,23 +35,23 @@ if [ "$distro" = "trusty" -o "$distro" = "ubuntu:14.04" ]; then
 fi
 
 # Always clean-up, but fail successfully
-docker kill polisd-node 2>/dev/null || true
-docker rm polisd-node 2>/dev/null || true
-stop docker-polisd 2>/dev/null || true
+docker kill dashd-node 2>/dev/null || true
+docker rm dashd-node 2>/dev/null || true
+stop docker-dashd 2>/dev/null || true
 
 # Always pull remote images to avoid caching issues
-if [ -z "${POLIS_IMAGE##*/*}" ]; then
-    docker pull $POLIS_IMAGE
+if [ -z "${DASH_IMAGE##*/*}" ]; then
+    docker pull $DASH_IMAGE
 fi
 
 # Initialize the data container
-docker volume create --name=polisd-data
-docker run -v polisd-data:/polis --rm $POLIS_IMAGE polis_init
+docker volume create --name=dashd-data
+docker run -v dashd-data:/dash --rm $DASH_IMAGE dash_init
 
-# Start polisd via upstart and docker
-curl https://raw.githubusercontent.com/TJennerjahn/docker-polisd/master/init/upstart.init > /etc/init/docker-polisd.conf
-start docker-polisd
+# Start dashd via upstart and docker
+curl https://raw.githubusercontent.com/TJennerjahn/docker-dashd/master/init/upstart.init > /etc/init/docker-dashd.conf
+start docker-dashd
 
 set +ex
-echo "Resulting polis.conf:"
-docker run -v polisd-data:/polis --rm $POLIS_IMAGE cat /polis/.poliscore/polis.conf
+echo "Resulting dash.conf:"
+docker run -v dashd-data:/dash --rm $DASH_IMAGE cat /dash/.dashcore/dash.conf

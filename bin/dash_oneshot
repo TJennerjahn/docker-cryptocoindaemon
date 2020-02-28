@@ -2,8 +2,8 @@
 
 set -ex
 
-# Generate polis.conf
-polis_init
+# Generate dash.conf
+dash_init
 
 if [ $# -gt 0 ]; then
     args=("$@")
@@ -11,4 +11,4 @@ else
     args=("-rpcallowip=::/0")
 fi
 
-exec polisd "${args[@]}"
+exec dashd "${args[@]}"

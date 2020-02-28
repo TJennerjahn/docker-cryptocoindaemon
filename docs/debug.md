@@ -2,22 +2,22 @@
 
 ## Things to Check
 
-* RAM utilization -- polisd is very hungry and typically needs in excess of 1GB.  A swap file might be necessary.
-* Disk utilization -- The polis blockchain will continue growing and growing and growing.  Then it will grow some more.  At the time of writing, 2GB+ is necessary.
+* RAM utilization -- dashd is very hungry and typically needs in excess of 1GB.  A swap file might be necessary.
+* Disk utilization -- The dash blockchain will continue growing and growing and growing.  Then it will grow some more.  At the time of writing, 2GB+ is necessary.
 
-## Viewing polisd Logs
+## Viewing dashd Logs
 
-    docker logs polisd-node
+    docker logs dashd-node
 
 
 ## Running Bash in Docker Container
 
-*Note:* This container will be run in the same way as the polisd node, but will not connect to already running containers or processes.
+*Note:* This container will be run in the same way as the dashd node, but will not connect to already running containers or processes.
 
-    docker run -v polisd-data:/polis --rm -it polispay/polisd bash -l
+    docker run -v dashd-data:/dash --rm -it dashpay/dashd bash -l
 
-You can also attach bash into running container to debug running polisd
+You can also attach bash into running container to debug running dashd
 
-    docker exec -it polisd-node bash -l
+    docker exec -it dashd-node bash -l
 
 

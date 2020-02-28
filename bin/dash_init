@@ -4,13 +4,13 @@ set -ex
 
 # This shouldn't be in the Dockerfile or containers built from the same image
 # will have the same credentials.
-if [ ! -e "$HOME/.poliscore/polis.conf" ]; then
-    mkdir -p $HOME/.poliscore
+if [ ! -e "$HOME/.dashcore/dash.conf" ]; then
+    mkdir -p $HOME/.dashcore
 
-    echo "Creating polis.conf"
+    echo "Creating dash.conf"
 
     # Seed a random password for JSON RPC server
-    cat <<EOF > $HOME/.poliscore/polis.conf
+    cat <<EOF > $HOME/.dashcore/dash.conf
 testnet=${TESTNET:-0}
 disablewallet=${DISABLEWALLET:-0}
 printtoconsole=${PRINTTOCONSOLE:-1}
@@ -19,13 +19,13 @@ txindex=${TXINDEX:-1}
 server=${SERVER:-1}
 rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
 rpcport=${RPCPORT:-9998}
-rpcuser=${RPCUSER:-polisrpc}
+rpcuser=${RPCUSER:-dashrpc}
 rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
 EOF
 
 fi
 
-cat $HOME/.poliscore/polis.conf
+cat $HOME/.dashcore/dash.conf
 
 echo "Initialization completed successfully"
 
