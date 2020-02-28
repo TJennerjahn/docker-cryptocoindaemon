@@ -14,6 +14,9 @@ if [ ! -e "$HOME/.poliscore/polis.conf" ]; then
 testnet=${TESTNET:-0}
 disablewallet=${DISABLEWALLET:-1}
 printtoconsole=${PRINTTOCONSOLE:-1}
+addressindex=${ADDRESSINDEX:-1}
+txindex=${TXINDEX:-1}
+server=${SERVER:-1}
 rpcclienttimeout=${RPCCLIENTTIMEOUT:30}
 rpcport=${RPCPORT:9998}
 rpcuser=${RPCUSER:-polisrpc}
