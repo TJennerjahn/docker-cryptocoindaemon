@@ -1,6 +1,6 @@
 [Unit]
-Description=Polisd Docker Container
-Documentation=https://github.com/TJennerjahn/docker-polisd
+Description=birakecoind Docker Container
+Documentation=https://github.com/TJennerjahn/docker-birakecoind
 After=network.target docker.socket
 Requires=docker.socket
 
@@ -9,13 +9,13 @@ RestartSec=10
 Restart=always
 
 # Modify IP6_PREFIX to match network config
-Environment="NAME=polisd"
-Environment="DATA_VOL=polisd-data"
-Environment="IMG=polispay/polisd:dev"
+Environment="NAME=birakecoind"
+Environment="DATA_VOL=birakecoind-data"
+Environment="IMG=birakecoinpay/birakecoind:dev"
 Environment="PORT=9999:9999/tcp"
 
 # To override environment variables, use local configuration directory:
-# /etc/systemd/system/docker-polisd.service/local.conf
+# /etc/systemd/system/docker-birakecoind.service/local.conf
 # http://www.freedesktop.org/software/systemd/man/systemd.unit.html
 
 # Clean-up bad state if still hanging around
@@ -25,7 +25,7 @@ ExecStartPre=-/usr/bin/docker rm -f $NAME
 ExecStartPre=-/usr/bin/docker pull $IMG
 
 # Main process
-ExecStart=/usr/bin/docker run --rm -v ${DATA_VOL}:/polis --name ${NAME} -p ${PORT} ${IMG} polis_oneshot $ARGS
+ExecStart=/usr/bin/docker run --rm -v ${DATA_VOL}:/birakecoin --name ${NAME} -p ${PORT} ${IMG} birakecoin_oneshot $ARGS
 
 [Install]
 WantedBy=multi-user.target
