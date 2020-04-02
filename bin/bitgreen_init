@@ -4,13 +4,13 @@ set -ex
 
 # This shouldn't be in the Dockerfile or containers built from the same image
 # will have the same credentials.
-if [ ! -e "$HOME/.bitgreencore/bitgreen.conf" ]; then
-    mkdir -p $HOME/.bitgreencore
+if [ ! -e "$HOME/.bitgreen/bitgreen.conf" ]; then
+    mkdir -p $HOME/.bitgreen
 
     echo "Creating bitgreen.conf"
 
     # Seed a random password for JSON RPC server
-    cat <<EOF > $HOME/.bitgreencore/bitgreen.conf
+    cat <<EOF > $HOME/.bitgreen/bitgreen.conf
 testnet=${TESTNET:-0}
 disablewallet=${DISABLEWALLET:-0}
 printtoconsole=${PRINTTOCONSOLE:-1}
@@ -25,7 +25,7 @@ EOF
 
 fi
 
-cat $HOME/.bitgreencore/bitgreen.conf
+cat $HOME/.bitgreen/bitgreen.conf
 
 echo "Initialization completed successfully"
 
