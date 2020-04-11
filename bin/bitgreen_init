@@ -2,8 +2,6 @@
 
 set -ex
 
-# This shouldn't be in the Dockerfile or containers built from the same image
-# will have the same credentials.
 if [ ! -e "$HOME/.bitgreen/bitgreen.conf" ]; then
     mkdir -p $HOME/.bitgreen
 
@@ -18,9 +16,9 @@ addressindex=${ADDRESSINDEX:-1}
 txindex=${TXINDEX:-1}
 server=${SERVER:-1}
 rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
-rpcport=${RPCPORT:-9998}
+rpcport=${RPCPORT:-1338}
 rpcuser=${RPCUSER:-bitgreenrpc}
-rpcpassword=${RPCPASSWORD:-`dd if=/dev/urandom bs=33 count=1 2>/dev/null | base64`}
+rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
 EOF
 
 fi

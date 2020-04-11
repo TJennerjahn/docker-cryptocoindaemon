@@ -1,0 +1,15 @@
+version: '2'
+services:
+  bitgreen:
+    network_mode: "host"
+    volumes:
+      - 'bitgreen-data:/bitgreen'
+    container_name: bitgreen-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:bitgreen'
+volumes:
+  bitgreen-data:
+    external: false
