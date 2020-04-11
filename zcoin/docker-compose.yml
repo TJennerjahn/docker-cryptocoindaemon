@@ -1,0 +1,15 @@
+version: '2'
+services:
+  zcoin:
+    network_mode: "host"
+    volumes:
+      - 'zcoin-data:/zcoin'
+    container_name: zcoin-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:zcoin'
+volumes:
+  zcoin-data:
+    external: false

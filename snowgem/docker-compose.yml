@@ -1,0 +1,15 @@
+version: '2'
+services:
+  snowgem:
+    network_mode: "host"
+    volumes:
+      - 'snowgem-data:/snowgem'
+    container_name: snowgem-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:snowgem'
+volumes:
+  snowgem-data:
+    external: false

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  syscoin:
+    network_mode: "host"
+    volumes:
+      - 'syscoin-data:/syscoin'
+    container_name: syscoin-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:syscoin'
+volumes:
+  syscoin-data:
+    external: false

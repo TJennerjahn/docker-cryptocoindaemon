@@ -1,0 +1,15 @@
+version: '2'
+services:
+  dash:
+    network_mode: "host"
+    volumes:
+      - 'dash-data:/dash'
+    container_name: dash-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:dash'
+volumes:
+  dash-data:
+    external: false

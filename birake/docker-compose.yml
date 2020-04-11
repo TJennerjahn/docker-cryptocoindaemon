@@ -1,0 +1,15 @@
+version: '2'
+services:
+  birake:
+    network_mode: "host"
+    volumes:
+      - 'birake-data:/birake'
+    container_name: birake-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:birake'
+volumes:
+  birake-data:
+    external: false

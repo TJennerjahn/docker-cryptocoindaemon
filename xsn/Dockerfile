@@ -1,0 +1,36 @@
+FROM phusion/baseimage
+
+ARG USER_ID
+ARG GROUP_ID
+
+ENV HOME /xsn
+
+# add user with specified (or default) user/group ids
+ENV USER_ID ${USER_ID:-1000}
+ENV GROUP_ID ${GROUP_ID:-1000}
+RUN groupadd -g ${GROUP_ID} xsn
+RUN useradd -u ${USER_ID} -g xsn -s /bin/bash -m -d /xsn xsn
+
+RUN chown xsn:xsn -R /xsn
+
+ADD https://github.com/X9Developers/XSN/releases/download/v1.0.21/xsn-1.0.21-x86_64-linux-gnu.tar.gz /tmp/
+RUN tar -xvf /tmp/xsn*.tar.gz -C /tmp/
+RUN cp /tmp/xsn*/bin/*  /usr/local/bin
+RUN rm -rf /tmp/xsn*
+
+ADD ./bin /usr/local/bin
+RUN chmod a+x /usr/local/bin/*
+
+# For some reason, docker.io (0.9.1~dfsg1-2) pkg in Ubuntu 14.04 has permission
+# denied issues when executing /bin/bash from trusted builds.  Building locally
+# works fine (strange).  Using the upstream docker (0.11.1) pkg from
+# http://get.docker.io/ubuntu works fine also and seems simpler.
+USER xsn
+
+VOLUME ["/xsn"]
+
+EXPOSE 9998 9999 19998 19999 1359
+
+WORKDIR /xsn
+
+CMD ["oneshot"]

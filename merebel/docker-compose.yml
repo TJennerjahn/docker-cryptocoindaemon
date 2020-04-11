@@ -1,0 +1,15 @@
+version: '2'
+services:
+  merebel:
+    network_mode: "host"
+    volumes:
+      - 'merebel-data:/merebel'
+    container_name: merebel-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:merebel'
+volumes:
+  merebel-data:
+    external: false

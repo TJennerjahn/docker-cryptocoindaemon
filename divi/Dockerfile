@@ -3,20 +3,22 @@ FROM phusion/baseimage
 ARG USER_ID
 ARG GROUP_ID
 
-ENV HOME /bitgreen
+ENV HOME /divi
 
 # add user with specified (or default) user/group ids
 ENV USER_ID ${USER_ID:-1000}
 ENV GROUP_ID ${GROUP_ID:-1000}
-RUN groupadd -g ${GROUP_ID} bitgreen
-RUN useradd -u ${USER_ID} -g bitgreen -s /bin/bash -m -d /bitgreen bitgreen
+RUN groupadd -g ${GROUP_ID} divi
+RUN useradd -u ${USER_ID} -g divi -s /bin/bash -m -d /divi divi
 
-RUN chown bitgreen:bitgreen -R /bitgreen
+RUN chown divi:divi -R /divi
 
-ADD https://github.com/bitgreen/bitgreen/releases/download/v1.4.0.8/bitgreen-1.4.0.8-x86_64-linux-gnu.tar.gz /tmp/
-RUN tar -xvf /tmp/bitgreen-*.tar.gz -C /tmp/
-RUN cp /tmp/bitgreen*/bin/*  /usr/local/bin
-RUN rm -rf /tmp/bitgreen*
+ADD https://divi-blockchain.ams3.cdn.digitaloceanspaces.com/releases/1.0.8/divi_ubuntu.zip /tmp/
+RUN apt-get update
+RUN apt-get install unzip --yes
+RUN unzip /tmp/divi_ubuntu.zip
+RUN cp divi_ubuntu/*  /usr/local/bin
+RUN rm -rf /tmp/divi*
 
 ADD ./bin /usr/local/bin
 RUN chmod a+x /usr/local/bin/*
@@ -25,12 +27,12 @@ RUN chmod a+x /usr/local/bin/*
 # denied issues when executing /bin/bash from trusted builds.  Building locally
 # works fine (strange).  Using the upstream docker (0.11.1) pkg from
 # http://get.docker.io/ubuntu works fine also and seems simpler.
-USER bitgreen
+USER divi
 
-VOLUME ["/bitgreen"]
+VOLUME ["/divi"]
 
-EXPOSE 9998 9999 19998 19999 1338
+EXPOSE 9998 9999 19998 19999 1349
 
-WORKDIR /bitgreen
+WORKDIR /divi
 
-CMD ["bitgreen_oneshot"]
+CMD ["oneshot"]

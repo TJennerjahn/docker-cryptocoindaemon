@@ -1,0 +1,15 @@
+version: '2'
+services:
+  litecoin:
+    network_mode: "host"
+    volumes:
+      - 'litecoin-data:/litecoin'
+    container_name: litecoin-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:litecoin'
+volumes:
+  litecoin-data:
+    external: false

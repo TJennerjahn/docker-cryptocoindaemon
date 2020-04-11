@@ -1,0 +1,15 @@
+version: '2'
+services:
+  horizen:
+    network_mode: "host"
+    volumes:
+      - 'horizen-data:/horizen'
+    container_name: horizen-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:horizen'
+volumes:
+  horizen-data:
+    external: false

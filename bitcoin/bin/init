@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -e "$HOME/.bitcoin/bitcoin.conf" ]; then
+    mkdir -p $HOME/.bitcoin
+
+    echo "Creating bitcoin.conf"
+
+    # Seed a random password for JSON RPC server
+    cat <<EOF > $HOME/.bitcoin/bitcoin.conf
+testnet=${TESTNET:-0}
+disablewallet=${DISABLEWALLET:-0}
+printtoconsole=${PRINTTOCONSOLE:-1}
+addressindex=${ADDRESSINDEX:-1}
+txindex=${TXINDEX:-1}
+server=${SERVER:-1}
+rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
+rpcport=${RPCPORT:-1354}
+rpcuser=${RPCUSER:-bitcoinrpc}
+rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
+EOF
+
+fi
+
+cat $HOME/.bitcoin/bitcoin.conf
+
+echo "Initialization completed successfully"
+
+#

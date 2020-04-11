@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -e "$HOME/.zcash/zcash.conf" ]; then
+    mkdir -p $HOME/.zcash
+
+    echo "Creating zcash.conf"
+
+    # Seed a random password for JSON RPC server
+    cat <<EOF > $HOME/.zcash/zcash.conf
+testnet=${TESTNET:-0}
+disablewallet=${DISABLEWALLET:-0}
+printtoconsole=${PRINTTOCONSOLE:-1}
+addressindex=${ADDRESSINDEX:-1}
+txindex=${TXINDEX:-1}
+server=${SERVER:-1}
+rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
+rpcport=${RPCPORT:-1345}
+rpcuser=${RPCUSER:-zcashrpc}
+rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
+EOF
+
+fi
+
+cat $HOME/.zcash/zcash.conf
+
+zcash-fetch-params
+
+echo "Initialization completed successfully"
+
+#

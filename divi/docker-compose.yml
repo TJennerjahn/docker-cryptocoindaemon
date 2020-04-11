@@ -1,0 +1,15 @@
+version: '2'
+services:
+  divi:
+    network_mode: "host"
+    volumes:
+      - 'divi-data:/divi'
+    container_name: divi-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:divi'
+volumes:
+  divi-data:
+    external: false

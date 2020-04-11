@@ -1,0 +1,15 @@
+version: '2'
+services:
+  bitcoin-sv:
+    network_mode: "host"
+    volumes:
+      - 'bitcoin-sv-data:/bitcoin-sv'
+    container_name: bitcoin-sv-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:bitcoin-sv'
+volumes:
+  bitcoin-sv-data:
+    external: false

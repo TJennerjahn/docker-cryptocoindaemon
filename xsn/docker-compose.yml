@@ -1,0 +1,15 @@
+version: '2'
+services:
+  xsn:
+    network_mode: "host"
+    volumes:
+      - 'xsn-data:/xsn'
+    container_name: xsn-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:xsn'
+volumes:
+  xsn-data:
+    external: false

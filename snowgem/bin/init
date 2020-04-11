@@ -1,0 +1,34 @@
+#!/bin/bash
+
+set -ex
+
+if [ ! -e "$HOME/.snowgem/snowgem.conf" ]; then
+    mkdir -p $HOME/.snowgem
+
+    echo "Creating snowgem.conf"
+
+    # Seed a random password for JSON RPC server
+    cat <<EOF > $HOME/.snowgem/snowgem.conf
+testnet=${TESTNET:-0}
+disablewallet=${DISABLEWALLET:-0}
+printtoconsole=${PRINTTOCONSOLE:-1}
+addressindex=${ADDRESSINDEX:-1}
+txindex=${TXINDEX:-1}
+server=${SERVER:-1}
+rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
+rpcport=${RPCPORT:-1358}
+rpcuser=${RPCUSER:-snowgemrpc}
+rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
+EOF
+
+fi
+
+cat $HOME/.snowgem/snowgem.conf
+
+git clone https://github.com/snowgem/snowgem.git
+cd snowgem
+./zcutil/fetch-params.sh
+
+echo "Initialization completed successfully"
+
+#

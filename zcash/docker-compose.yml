@@ -1,0 +1,15 @@
+version: '2'
+services:
+  zcash:
+    network_mode: "host"
+    volumes:
+      - 'zcash-data:/zcash'
+    container_name: zcash-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:zcash'
+volumes:
+  zcash-data:
+    external: false

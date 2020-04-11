@@ -1,0 +1,15 @@
+version: '2'
+services:
+  zenzo:
+    network_mode: "host"
+    volumes:
+      - 'zenzo-data:/zenzo'
+    container_name: zenzo-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:zenzo'
+volumes:
+  zenzo-data:
+    external: false

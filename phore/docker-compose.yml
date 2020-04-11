@@ -1,0 +1,15 @@
+version: '2'
+services:
+  phore:
+    network_mode: "host"
+    volumes:
+      - 'phore-data:/phore'
+    container_name: phore-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:phore'
+volumes:
+  phore-data:
+    external: false

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  wagerr:
+    network_mode: "host"
+    volumes:
+      - 'wagerr-data:/wagerr'
+    container_name: wagerr-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:wagerr'
+volumes:
+  wagerr-data:
+    external: false

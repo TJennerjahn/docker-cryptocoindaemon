@@ -1,0 +1,15 @@
+version: '2'
+services:
+  pivx:
+    network_mode: "host"
+    volumes:
+      - 'pivx-data:/pivx'
+    container_name: pivx-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:pivx'
+volumes:
+  pivx-data:
+    external: false

@@ -1,0 +1,15 @@
+version: '2'
+services:
+  energi:
+    network_mode: "host"
+    volumes:
+      - 'energi-data:/energi'
+    container_name: energi-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:energi'
+volumes:
+  energi-data:
+    external: false

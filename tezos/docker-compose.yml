@@ -1,0 +1,15 @@
+version: '2'
+services:
+  polis:
+    network_mode: "host"
+    volumes:
+      - 'polis-data:/polis'
+    container_name: polis-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:polis'
+volumes:
+  polis-data:
+    external: false

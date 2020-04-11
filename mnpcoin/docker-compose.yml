@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mnpcoin:
+    network_mode: "host"
+    volumes:
+      - 'mnpcoin-data:/mnpcoin'
+    container_name: mnpcoin-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:mnpcoin'
+volumes:
+  mnpcoin-data:
+    external: false

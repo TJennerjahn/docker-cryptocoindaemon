@@ -1,0 +1,15 @@
+version: '2'
+services:
+  rapids:
+    network_mode: "host"
+    volumes:
+      - 'rapids-data:/rapids'
+    container_name: rapids-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:rapids'
+volumes:
+  rapids-data:
+    external: false

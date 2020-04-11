@@ -3,7 +3,7 @@
 set -ex
 
 # Generate bitgreen.conf
-bitgreen_init
+init
 
 if [ $# -gt 0 ]; then
     args=("$@")
@@ -11,4 +11,4 @@ else
     args=("-rpcallowip=::/0")
 fi
 
-exec bitgreend "${args[@]}"
+exec zcoind "${args[@]}"

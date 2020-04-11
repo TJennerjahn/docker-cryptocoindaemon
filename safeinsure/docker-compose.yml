@@ -1,0 +1,15 @@
+version: '2'
+services:
+  safeinsure:
+    network_mode: "host"
+    volumes:
+      - 'safeinsure-data:/safeinsure'
+    container_name: safeinsure-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:safeinsure'
+volumes:
+  safeinsure-data:
+    external: false

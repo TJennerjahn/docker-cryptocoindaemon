@@ -1,0 +1,15 @@
+version: '2'
+services:
+  esbc:
+    network_mode: "host"
+    volumes:
+      - 'esbc-data:/esbc'
+    container_name: esbc-node
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    image: 'cryptocoindaemon:esbc'
+volumes:
+  esbc-data:
+    external: false
