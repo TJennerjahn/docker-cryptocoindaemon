@@ -17,7 +17,7 @@ txindex=${TXINDEX:-1}
 server=${SERVER:-1}
 rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
 rpcport=${RPCPORT:-1338}
-rpcuser=${RPCUSER:-bitgreenrpc}
+rpcuser=${RPCUSER: inviewrpc}
 rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
 EOF
 
