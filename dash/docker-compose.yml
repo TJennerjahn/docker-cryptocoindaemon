@@ -1,6 +1,7 @@
 version: '3'
 services:
   dash:
+    build: .
     network_mode: "host"
     volumes:
       - 'dash-data:/dash'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:dash'
+    image: 'tjennerjahn/cryptocoindaemon:dash'
 volumes:
   dash-data:
     external: false

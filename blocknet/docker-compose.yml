@@ -1,6 +1,7 @@
 version: '3'
 services:
   blocknet:
+    build: .
     network_mode: "host"
     volumes:
       - 'blocknet-data:/blocknet'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:blocknet'
+    image: 'tjennerjahn/cryptocoindaemon:blocknet'
 volumes:
   blocknet-data:
     external: false

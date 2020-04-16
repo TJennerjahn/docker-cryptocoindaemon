@@ -1,6 +1,7 @@
 version: '3'
 services:
   zenzo:
+    build: .
     network_mode: "host"
     volumes:
       - 'zenzo-data:/zenzo'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:zenzo'
+    image: 'tjennerjahn/cryptocoindaemon:zenzo'
 volumes:
   zenzo-data:
     external: false

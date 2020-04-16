@@ -1,6 +1,7 @@
 version: '3'
 services:
   snowgem:
+    build: .
     network_mode: "host"
     volumes:
       - 'snowgem-data:/snowgem'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:snowgem'
+    image: 'tjennerjahn/cryptocoindaemon:snowgem'
 volumes:
   snowgem-data:
     external: false

@@ -1,6 +1,7 @@
 version: '3'
 services:
   bitgreen:
+    build: .
     network_mode: "host"
     volumes:
       - 'bitgreen-data:/bitgreen'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:bitgreen'
+    image: 'tjennerjahn/cryptocoindaemon:bitgreen'
 volumes:
   bitgreen-data:
     external: false

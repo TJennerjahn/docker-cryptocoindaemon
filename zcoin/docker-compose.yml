@@ -1,6 +1,7 @@
 version: '3'
 services:
   zcoin:
+    build: .
     network_mode: "host"
     volumes:
       - 'zcoin-data:/zcoin'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:zcoin'
+    image: 'tjennerjahn/cryptocoindaemon:zcoin'
 volumes:
   zcoin-data:
     external: false

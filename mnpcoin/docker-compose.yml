@@ -1,6 +1,7 @@
 version: '3'
 services:
   mnpcoin:
+    build: .
     network_mode: "host"
     volumes:
       - 'mnpcoin-data:/mnpcoin'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:mnpcoin'
+    image: 'tjennerjahn/cryptocoindaemon:mnpcoin'
 volumes:
   mnpcoin-data:
     external: false

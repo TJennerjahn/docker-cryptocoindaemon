@@ -1,6 +1,7 @@
 version: '3'
 services:
   esbc:
+    build: .
     network_mode: "host"
     volumes:
       - 'esbc-data:/esbc'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:esbc'
+    image: 'tjennerjahn/cryptocoindaemon:esbc'
 volumes:
   esbc-data:
     external: false

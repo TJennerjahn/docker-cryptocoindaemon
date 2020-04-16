@@ -1,6 +1,7 @@
 version: '3'
 services:
   divi:
+    build: .
     network_mode: "host"
     volumes:
       - 'divi-data:/divi'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:divi'
+    image: 'tjennerjahn/cryptocoindaemon:divi'
 volumes:
   divi-data:
     external: false

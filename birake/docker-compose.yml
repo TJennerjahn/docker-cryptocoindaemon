@@ -1,6 +1,7 @@
 version: '3'
 services:
   birake:
+    build: .
     network_mode: "host"
     volumes:
       - 'birake-data:/birake'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:birake'
+    image: 'tjennerjahn/cryptocoindaemon:birake'
 volumes:
   birake-data:
     external: false

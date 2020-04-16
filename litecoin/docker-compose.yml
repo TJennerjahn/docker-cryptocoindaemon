@@ -1,6 +1,7 @@
 version: '3'
 services:
   litecoin:
+    build: .
     network_mode: "host"
     volumes:
       - 'litecoin-data:/litecoin'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:litecoin'
+    image: 'tjennerjahn/cryptocoindaemon:litecoin'
 volumes:
   litecoin-data:
     external: false

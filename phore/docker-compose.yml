@@ -1,6 +1,7 @@
 version: '3'
 services:
   phore:
+    build: .
     network_mode: "host"
     volumes:
       - 'phore-data:/phore'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:phore'
+    image: 'tjennerjahn/cryptocoindaemon:phore'
 volumes:
   phore-data:
     external: false

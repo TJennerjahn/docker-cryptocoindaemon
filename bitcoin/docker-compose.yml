@@ -1,6 +1,7 @@
 version: '3'
 services:
   bitcoin:
+    build: .
     network_mode: "host"
     volumes:
       - 'bitcoin-data:/bitcoin'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:bitcoin'
+    image: 'tjennerjahn/cryptocoindaemon:bitcoin'
 volumes:
   bitcoin-data:
     external: false

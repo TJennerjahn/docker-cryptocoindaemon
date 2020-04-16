@@ -14,10 +14,10 @@ RUN useradd -u ${USER_ID} -g snowgem -s /bin/bash -m -d /snowgem snowgem
 RUN chown snowgem:snowgem -R /snowgem
 
 
-RUN apt-get update
-RUN apt-get install unzip --yes
-RUN apt-get install libgomp1 --yes
-RUN apt-get install wget curl git --yes
+RUN apt update
+RUN apt install unzip --yes
+RUN apt install libgomp1 --yes
+RUN apt install wget curl git --yes
 
 ADD https://github.com/Snowgem/Snowgem/releases/download/v3000457-20190909/snowgem-ubuntu16.04-3000457-20190926.zip /tmp/
 

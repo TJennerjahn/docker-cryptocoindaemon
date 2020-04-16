@@ -1,6 +1,7 @@
 version: '3'
 services:
   merebel:
+    build: .
     network_mode: "host"
     volumes:
       - 'merebel-data:/merebel'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:merebel'
+    image: 'tjennerjahn/cryptocoindaemon:merebel'
 volumes:
   merebel-data:
     external: false

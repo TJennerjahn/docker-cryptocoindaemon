@@ -1,6 +1,7 @@
 version: '3'
 services:
   polis:
+    build: .
     network_mode: "host"
     volumes:
       - 'polis-data:/polis'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:polis'
+    image: 'tjennerjahn/cryptocoindaemon:polis'
 volumes:
   polis-data:
     external: false

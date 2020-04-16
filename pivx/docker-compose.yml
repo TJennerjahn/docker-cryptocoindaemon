@@ -1,6 +1,7 @@
 version: '3'
 services:
   pivx:
+    build: .
     network_mode: "host"
     volumes:
       - 'pivx-data:/pivx'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:pivx'
+    image: 'tjennerjahn/cryptocoindaemon:pivx'
 volumes:
   pivx-data:
     external: false

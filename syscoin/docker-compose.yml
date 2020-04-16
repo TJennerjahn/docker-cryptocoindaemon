@@ -1,6 +1,7 @@
 version: '3'
 services:
   syscoin:
+    build: .
     network_mode: "host"
     volumes:
       - 'syscoin-data:/syscoin'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:syscoin'
+    image: 'tjennerjahn/cryptocoindaemon:syscoin'
 volumes:
   syscoin-data:
     external: false

@@ -1,6 +1,7 @@
 version: '3'
 services:
   rapids:
+    build: .
     network_mode: "host"
     volumes:
       - 'rapids-data:/rapids'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:rapids'
+    image: 'tjennerjahn/cryptocoindaemon:rapids'
 volumes:
   rapids-data:
     external: false

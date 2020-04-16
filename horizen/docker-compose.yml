@@ -1,6 +1,7 @@
 version: '3'
 services:
   horizen:
+    build: .
     network_mode: "host"
     volumes:
       - 'horizen-data:/horizen'
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'cryptocoindaemon:horizen'
+    image: 'tjennerjahn/cryptocoindaemon:horizen'
 volumes:
   horizen-data:
     external: false
