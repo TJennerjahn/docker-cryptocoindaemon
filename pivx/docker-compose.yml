@@ -2,7 +2,6 @@ version: '3'
 services:
   pivx:
     build: .
-    network_mode: "host"
     volumes:
       - 'pivx-data:/pivx'
     container_name: pivx-node

@@ -1,0 +1,22 @@
+docker stack deploy --compose-file "birake/docker-compose.yml" birake-node &&
+docker stack deploy --compose-file "bitgreen/docker-compose.yml" bitgreen-node &&
+docker stack deploy --compose-file "blocknet/docker-compose.yml" blocknet-node &&
+docker stack deploy --compose-file "dash/docker-compose.yml" dash-node &&
+docker stack deploy --compose-file "divi/docker-compose.yml" divi-node &&
+docker stack deploy --compose-file "energi/docker-compose.yml" energi-node &&
+docker stack deploy --compose-file "esbc/docker-compose.yml" esbc-node &&
+docker stack deploy --compose-file "horizen/docker-compose.yml" horizen-node &&
+docker stack deploy --compose-file "litecoin/docker-compose.yml" litecoin-node &&
+docker stack deploy --compose-file "merebel/docker-compose.yml" merebel-node &&
+docker stack deploy --compose-file "mnpcoin/docker-compose.yml" mnpcoin-node &&
+docker stack deploy --compose-file "phore/docker-compose.yml" phore-node &&
+docker stack deploy --compose-file "pivx/docker-compose.yml" pivx-node &&
+docker stack deploy --compose-file "rapids/docker-compose.yml" rapids-node &&
+docker stack deploy --compose-file "safeinsure/docker-compose.yml" safeinsure-node &&
+docker stack deploy --compose-file "snowgem/docker-compose.yml" snowgem-node &&
+docker stack deploy --compose-file "syscoin/docker-compose.yml" syscoin-node &&
+docker stack deploy --compose-file "wagerr/docker-compose.yml" wagerr-node &&
+docker stack deploy --compose-file "xsn/docker-compose.yml" xsn-node &&
+docker stack deploy --compose-file "zcash/docker-compose.yml" zcash-node &&
+docker stack deploy --compose-file "zcoin/docker-compose.yml" zcoin-node &&
+docker stack deploy --compose-file "zenzo/docker-compose.yml" zenzo-node
