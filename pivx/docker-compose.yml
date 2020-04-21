@@ -1,7 +1,8 @@
 version: '3'
 services:
-  pivx:
+  polis:
     build: .
+    network_mode: "host"
     volumes:
       - 'pivx-data:/pivx'
     container_name: pivx-node
@@ -9,7 +10,7 @@ services:
     logging:
       options:
         max-size: 1g
-    image: 'tjennerjahn/cryptocoindaemon:pivx'
+    image: 'cryptocoindaemon:polis'
 volumes:
   pivx-data:
     external: false

@@ -1,26 +1,36 @@
-FROM ubuntu:18.04
+FROM phusion/baseimage
 
-# Install Base files
-RUN apt update && apt install -y cron curl git
-RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
-RUN bash nodesource_setup.sh
-RUN apt install nodejs -y
+ARG USER_ID
+ARG GROUP_ID
 
-RUN git clone https://TJennerjahn:TestPleaseIgnore1@github.com/TJennerjahn/my-indexer.git
-WORKDIR /my-indexer
-RUN npm install
+ENV HOME /pivx
 
-# Add files
-WORKDIR /
-ADD blockSync.sh /blockSync.sh
-ADD masternodeSync.sh /masternodeSync.sh
-ADD entrypoint.sh /entrypoint.sh
+# add user with specified (or default) user/group ids
+ENV USER_ID ${USER_ID:-1000}
+ENV GROUP_ID ${GROUP_ID:-1000}
+RUN groupadd -g ${GROUP_ID} pivx
+RUN useradd -u ${USER_ID} -g pivx -s /bin/bash -m -d /pivx pivx
 
-RUN chmod +x /blockSync.sh /masternodeSync.sh /entrypoint.sh
+RUN chown pivx:pivx -R /pivx
 
 ADD https://github.com/PIVX-Project/PIVX/releases/download/v4.0.2/pivx-4.0.2-x86_64-linux-gnu.tar.gz /tmp/
 RUN tar -xvf /tmp/pivx-*.tar.gz -C /tmp/
 RUN cp /tmp/pivx*/bin/*  /usr/bin
 RUN rm -rf /tmp/pivx*
 
-ENTRYPOINT /entrypoint.sh
+ADD ./bin /usr/local/bin
+RUN chmod a+x /usr/local/bin/*
+
+# For some reason, docker.io (0.9.1~dfsg1-2) pkg in Ubuntu 14.04 has permission
+# denied issues when executing /bin/bash from trusted builds.  Building locally
+# works fine (strange).  Using the upstream docker (0.11.1) pkg from
+# http://get.docker.io/ubuntu works fine also and seems simpler.
+USER pivx
+
+VOLUME ["/pivx"]
+
+EXPOSE 9998 9999 19998 19999 1338
+
+WORKDIR /pivx
+
+CMD ["oneshot"]
