@@ -13,7 +13,7 @@ RUN useradd -u ${USER_ID} -g bitgreen -s /bin/bash -m -d /bitgreen bitgreen
 
 RUN chown bitgreen:bitgreen -R /bitgreen
 
-ADD https://github.com/bitgreen/bitgreen/releases/download/v1.4.0.8/bitgreen-1.4.0.8-x86_64-linux-gnu.tar.gz /tmp/
+ADD https://github.com/bitgreen/bitgreen/releases/download/v1.4.0.9/bitgreen-1.4.0.9-x86_64-linux-gnu.tar.gz /tmp/
 RUN tar -xvf /tmp/bitgreen-*.tar.gz -C /tmp/
 RUN cp /tmp/bitgreen*/bin/*  /usr/local/bin
 RUN rm -rf /tmp/bitgreen*

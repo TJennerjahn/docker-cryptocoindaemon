@@ -1,7 +1,6 @@
 version: '3'
 services:
   bitgreen:
-    build: .
     network_mode: "host"
     volumes:
       - 'bitgreen-data:/bitgreen'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:bitgreen'
+  bitgreen_sync:
+    network_mode: "host"
+    container_name: bitgreen-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'bitgreen'
 volumes:
   bitgreen-data:
     external: false
