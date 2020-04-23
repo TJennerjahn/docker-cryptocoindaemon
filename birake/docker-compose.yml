@@ -1,7 +1,6 @@
 version: '3'
 services:
   birake:
-    build: .
     network_mode: "host"
     volumes:
       - 'birake-data:/birake'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:birake'
+  birake_sync:
+    network_mode: "host"
+    container_name: birake-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'birake'
 volumes:
   birake-data:
     external: false
