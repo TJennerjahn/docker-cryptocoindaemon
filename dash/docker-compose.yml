@@ -11,6 +11,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:dash'
+  dash_sync:
+    network_mode: "host"
+    container_name: dash-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '* * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'dash'
 volumes:
   dash-data:
     external: false
