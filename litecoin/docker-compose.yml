@@ -1,7 +1,6 @@
 version: '3'
 services:
   litecoin:
-    build: .
     network_mode: "host"
     volumes:
       - 'litecoin-data:/litecoin'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:litecoin'
+  litecoin_sync:
+    network_mode: "host"
+    container_name: litecoin-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'litecoin'
 volumes:
   litecoin-data:
     external: false
