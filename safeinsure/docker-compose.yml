@@ -1,7 +1,6 @@
 version: '3'
 services:
   safeinsure:
-    build: .
     network_mode: "host"
     volumes:
       - 'safeinsure-data:/safeinsure'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:safeinsure'
+  safeinsure_sync:
+    network_mode: "host"
+    container_name: safeinsure-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'safeinsure'
 volumes:
   safeinsure-data:
     external: false
