@@ -1,7 +1,6 @@
 version: '3'
 services:
   divi:
-    build: .
     network_mode: "host"
     volumes:
       - 'divi-data:/divi'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:divi'
+  divi_sync:
+    network_mode: "host"
+    container_name: divi-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'divi'
 volumes:
   divi-data:
     external: false
