@@ -11,6 +11,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:wagerr'
+  wagerr_sync:
+    network_mode: "host"
+    container_name: wagerr-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'wagerr'
 volumes:
   wagerr-data:
     external: false
