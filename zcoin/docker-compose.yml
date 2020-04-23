@@ -1,7 +1,6 @@
 version: '3'
 services:
   zcoin:
-    build: .
     network_mode: "host"
     volumes:
       - 'zcoin-data:/zcoin'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:zcoin'
+  zcoin_sync:
+    network_mode: "host"
+    container_name: zcoin-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'zcoin'
 volumes:
   zcoin-data:
     external: false
