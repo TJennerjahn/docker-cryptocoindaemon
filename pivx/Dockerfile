@@ -29,8 +29,6 @@ USER pivx
 
 VOLUME ["/pivx"]
 
-EXPOSE 9998 9999 19998 19999 1338
-
 WORKDIR /pivx
 
 CMD ["oneshot"]
