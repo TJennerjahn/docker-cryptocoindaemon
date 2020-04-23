@@ -1,7 +1,6 @@
 version: '3'
 services:
   zcash:
-    build: .
     network_mode: "host"
     volumes:
       - 'zcash-data:/zcash'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:zcash'
+  zcash_sync:
+    network_mode: "host"
+    container_name: zcash-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'zcash'
 volumes:
   zcash-data:
     external: false

@@ -16,8 +16,8 @@ addressindex=${ADDRESSINDEX:-1}
 txindex=${TXINDEX:-1}
 server=${SERVER:-1}
 rpcclienttimeout=${RPCCLIENTTIMEOUT:-30}
-rpcport=${RPCPORT:-1345}
-rpcuser=${RPCUSER: inviewrpc}
+rpcport=${RPCPORT:-1348}
+rpcuser=${RPCUSER:-zcashrpc}
 rpcpassword=${RPCPASSWORD:-u7SV2ApjNmaiF5Y037h58CpWBGZLBDGULsYqzf6/nJdK}
 EOF
 
