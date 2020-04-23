@@ -1,7 +1,6 @@
 version: '3'
 services:
   snowgem:
-    build: .
     network_mode: "host"
     volumes:
       - 'snowgem-data:/snowgem'
@@ -11,6 +10,14 @@ services:
       options:
         max-size: 1g
     image: 'tjennerjahn/cryptocoindaemon:snowgem'
+  snowgem_sync:
+    network_mode: "host"
+    container_name: snowgem-sync
+    image: 'tjennerjahn/cryptocoindaemon:dbsync'
+    environment:
+      TASK_SCHEDULE: '*/10 * * * *'
+      NPM_COMMAND: 'start'
+      COIN_NAME: 'snowgem'
 volumes:
   snowgem-data:
     external: false
